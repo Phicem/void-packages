@@ -1,0 +1,10 @@
+# Template file for 'calculix'
+pkgname=calculix
+version=2.19
+revision=1
+build_style=meta
+depends="calculix-cgx-${version}_${revision} calculix-ccx-${version}_${revision}"
+short_desc="3D Structural Finite Element Program"
+maintainer="Phicem <phicem@gmx.com>"
+license="GPL-2.0-only"
+homepage="http://www.dhondt.de/"
