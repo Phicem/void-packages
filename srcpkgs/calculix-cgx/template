@@ -1,0 +1,26 @@
+# Template file for 'calculix-cgx'
+pkgname=calculix-cgx
+version=2.19
+revision=1
+wrksrc=CalculiX
+_cgx_dir=cgx_${version}
+makedepends="glu-devel libglvnd-devel libXmu-devel libXi-devel"
+depends="tetgen"
+short_desc="3D Structural Finite Element Program - Graphical interface"
+maintainer="Phicem <phicem@gmx.com>"
+license="GPL-2.0-or-later, custom:GLUT"
+homepage="http://www.dhondt.de/"
+distfiles="http://www.dhondt.de/cgx_${version}.all.tar.bz2"
+checksum=598121372373b679a228c85d25c7e549489a38535d82f025acb750f831afe546
+CFLAGS=" -Wall -O2  -I /usr/include/SPOOLES-2.2 -DARCH='Linux' -DSPOOLES -DARPACK -DMATRIXSTORAGE -DNETWORKOUT"
+
+do_build() {
+	make -C ${_cgx_dir}/src
+}
+
+do_install() {
+	vbin ${_cgx_dir}/src/cgx
+	vlicense ${_cgx_dir}/README CGX_LICENSE
+	vlicense glut-3.5/NOTICE GLUT_LICENSE
+	vlicense ${FILESDIR}/README_LICENSES
+}
