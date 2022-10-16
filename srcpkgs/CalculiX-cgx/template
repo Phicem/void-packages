@@ -1,0 +1,28 @@
+# Template file for 'CalculiX-cgx'
+pkgname=CalculiX-cgx
+version=2.20
+revision=1
+archs=~"*-musl"
+wrksrc=CalculiX
+_cgx_dir=cgx_${version}
+build_style="gnu-makefile"
+make_build_args="-C ${_cgx_dir}/src"
+makedepends="glu-devel libglvnd-devel libXmu-devel libXi-devel"
+depends="tetgen"
+short_desc="3D Structural Finite Element Program - Graphical interface"
+maintainer="Phicem <phicem@gmx.com>"
+license="GPL-2.0-or-later, custom:GLUT"
+homepage="http://www.dhondt.de/"
+distfiles="http://www.dhondt.de/cgx_${version}.all.tar.bz2"
+checksum=f4c840c3633718547e33f86b2d7bc6b35608dd8d6cbf9fa192cecef34f2dc908
+if [ "$XBPS_MACHINE" == "x86_64" ] ; then
+	hostmakedepends+="glibc-devel-32bit"
+fi
+CFLAGS=" -O2 -Wall -Wno-narrowing  -I./  -I/usr/include/  -I/usr/include/GL  -I../../libSNL/src  -I../../glut-3.5/src  -I/usr/X11/include"
+
+do_install() {
+	vbin ${_cgx_dir}/src/cgx
+	vlicense ${_cgx_dir}/README CGX_LICENSE
+	vlicense glut-3.5/NOTICE GLUT_LICENSE
+	vlicense ${FILESDIR}/README_LICENSES
+}

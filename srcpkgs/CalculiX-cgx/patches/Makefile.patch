@@ -1,0 +1,16 @@
+--- CalculiX/cgx_2.20/src/Makefile.orig	2022-07-29 11:41:00.438531485 +0200
++++ CalculiX/cgx_2.20/src/Makefile	2022-10-15 13:34:33.978116884 +0200
+@@ -1,3 +1,4 @@
++CXX=g++
+ # on MacOS it might be necessary to remove -DSEMINIT
+ CFLAGS = -O2 -Wall -Wno-narrowing -DSEMINIT \
+   -I./ \
+@@ -67,7 +68,7 @@
+ OUTIL = $(SUTIL:.c=.o)
+ 
+ cgx: $(OLIB) $(OUTIL) $(OULIB)
+-	g++  $(OULIB)  $(OLIB) $(OUTIL)  $(CFLAGS) $(LFLAGS) -o  $@
++	${CXX}  $(OULIB)  $(OLIB) $(OUTIL)  $(CFLAGS) $(LFLAGS) -o  $@
+ 
+ 
+ 

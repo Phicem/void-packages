@@ -1,0 +1,5 @@
+cgx program is released under GNU GPL v2 or later (except for a few functions, see CGX_LICENSE)
+
+To be compiled, this program makes use of other programs released under different licenses:
+* glut is released under a custom license (see GLUT_LICENSE)
+* libSN is released under GNU GPL v2 or later
