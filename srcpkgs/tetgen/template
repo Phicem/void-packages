@@ -1,0 +1,25 @@
+# Template file for 'tetgen'
+pkgname=tetgen
+version=1.5.1
+revision=1
+build_style="gnu-makefile"
+make_cmd="make -C ${pkgname}${version} -f makefile"
+hostmakedepends="tar"
+short_desc="Quality Tetrahedral Mesh Generator and 3D Delaunay Triangulator"
+maintainer="Phicem <phicem@gmx.com>"
+license="AGPL-3.0-or-later"
+homepage="https://www.wias-berlin.de/software/index.jsp?id=TetGen"
+distfiles="http://www.dhondt.de/cgx_2.20.all.tar.bz2"
+checksum=f4c840c3633718547e33f86b2d7bc6b35608dd8d6cbf9fa192cecef34f2dc908
+
+do_extract() {
+	local srcdir="$XBPS_SRCDISTDIR/$pkgname-$version"
+	tar -xvjf $srcdir/"$(basename ${distfiles})"
+	pwd
+	tar -xvf ${pkgname}${version}.tar
+}
+
+do_install() {
+	vbin ${pkgname}${version}/tetgen
+	vlicense ${pkgname}${version}/LICENSE
+}
